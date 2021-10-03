@@ -27,6 +27,7 @@ message Company {
     string address = 5;
     string tax_number = 6;
     uint32 total_employee = 7;
+    uint32 total_project = 8;
 
     string created_at = 20;
     string updated_at = 21;
