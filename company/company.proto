@@ -28,7 +28,6 @@ message Company {
     string tax_number = 6;
     uint32 total_employee = 7;
     uint32 total_project = 8;
-
     string created_at = 20;
     string updated_at = 21;
 }
@@ -38,10 +37,13 @@ message OneCompanyRequest {
 }
 
 message ListCompanyRequest {
+    string  Name = 1 ;
+    string Email = 2 ;
     uint32 page = 3;
     uint32 limit = 4;
     string created_at_min = 5;
     string created_at_max = 6;
+    string search_fields = 7;
 }
 
 message ListCompanyResponse {

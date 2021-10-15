@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "company/company.proto",
+    "title": "employee/employee.proto",
     "version": "version not set"
   },
   "consumes": [
@@ -11,14 +11,14 @@
     "application/json"
   ],
   "paths": {
-    "/go/companies": {
-      "get": {
-        "operationId": "CompanyService_List",
+    "/go/company/{company_id}/employee": {
+      "post": {
+        "operationId": "EmployeeService_Create",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/companyListCompanyResponse"
+              "$ref": "#/definitions/employeeEmployee"
             }
           },
           "default": {
@@ -30,13 +30,192 @@
         },
         "parameters": [
           {
-            "name": "Name",
+            "name": "company_id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/employeeEmployee"
+            }
+          }
+        ],
+        "tags": [
+          "EmployeeService"
+        ]
+      }
+    },
+    "/go/company/{company_id}/employee/{id}": {
+      "get": {
+        "operationId": "EmployeeService_Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/employeeEmployee"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "EmployeeService"
+        ]
+      },
+      "delete": {
+        "operationId": "EmployeeService_Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "EmployeeService"
+        ]
+      },
+      "put": {
+        "operationId": "EmployeeService_Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/employeeEmployee"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/employeeEmployee"
+            }
+          }
+        ],
+        "tags": [
+          "EmployeeService"
+        ]
+      }
+    },
+    "/go/company/{company_id}/employees": {
+      "get": {
+        "operationId": "EmployeeService_List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/employeeListEmployeeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "name",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
-            "name": "Email",
+            "name": "email",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "dob",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "role",
             "in": "query",
             "required": false,
             "type": "string"
@@ -66,175 +245,39 @@
             "in": "query",
             "required": false,
             "type": "string"
-          },
-          {
-            "name": "search_fields",
-            "in": "query",
-            "required": false,
-            "type": "string"
           }
         ],
         "tags": [
-          "CompanyService"
-        ]
-      }
-    },
-    "/go/company": {
-      "post": {
-        "operationId": "CompanyService_Create",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/companyCompany"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/runtimeError"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/companyCompany"
-            }
-          }
-        ],
-        "tags": [
-          "CompanyService"
-        ]
-      }
-    },
-    "/go/company/{id}": {
-      "get": {
-        "operationId": "CompanyService_Get",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/companyCompany"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/runtimeError"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "CompanyService"
-        ]
-      },
-      "delete": {
-        "operationId": "CompanyService_Delete",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "properties": {}
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/runtimeError"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "CompanyService"
-        ]
-      },
-      "put": {
-        "operationId": "CompanyService_Update",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/companyCompany"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/runtimeError"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/companyCompany"
-            }
-          }
-        ],
-        "tags": [
-          "CompanyService"
+          "EmployeeService"
         ]
       }
     }
   },
   "definitions": {
-    "companyCompany": {
+    "employeeEmployee": {
       "type": "object",
       "properties": {
         "id": {
           "type": "string"
         },
-        "name": {
-          "type": "string"
+        "company_id": {
+          "type": "integer",
+          "format": "int64"
         },
-        "phone": {
+        "name": {
           "type": "string"
         },
         "email": {
           "type": "string"
         },
-        "address": {
+        "dob": {
           "type": "string"
         },
-        "tax_number": {
+        "gender": {
           "type": "string"
         },
-        "total_employee": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "total_project": {
-          "type": "integer",
-          "format": "int64"
+        "role": {
+          "type": "string"
         },
         "created_at": {
           "type": "string"
@@ -244,13 +287,13 @@
         }
       }
     },
-    "companyListCompanyResponse": {
+    "employeeListEmployeeResponse": {
       "type": "object",
       "properties": {
         "items": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/companyCompany"
+            "$ref": "#/definitions/employeeEmployee"
           }
         },
         "max_page": {
@@ -266,6 +309,10 @@
           "format": "int64"
         },
         "limit": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "company_id": {
           "type": "integer",
           "format": "int64"
         }
