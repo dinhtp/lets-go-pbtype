@@ -42,6 +42,8 @@ message ListCompanyRequest {
     uint32 limit = 4;
     string created_at_min = 5;
     string created_at_max = 6;
+    string search_field = 7;
+    string search_value = 8;
 }
 
 message ListCompanyResponse {
@@ -50,6 +52,8 @@ message ListCompanyResponse {
     uint32 total_count = 3;
     uint32 page = 4;
     uint32 limit = 5;
+    string search_field = 6;
+    string search_value = 7;
 }
 
 service CompanyService {

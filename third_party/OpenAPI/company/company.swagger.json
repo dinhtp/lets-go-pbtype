@@ -54,6 +54,18 @@
             "in": "query",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "search_field",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "search_value",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -250,6 +262,12 @@
         "limit": {
           "type": "integer",
           "format": "int64"
+        },
+        "search_field": {
+          "type": "string"
+        },
+        "search_value": {
+          "type": "string"
         }
       }
     },
