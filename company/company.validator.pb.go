@@ -4,14 +4,14 @@
 package company
 
 import (
-	fmt "fmt"
-	math "math"
-	proto "github.com/gogo/protobuf/proto"
-	golang_proto "github.com/golang/protobuf/proto"
-	_ "github.com/gogo/protobuf/gogoproto"
-	_ "github.com/gogo/protobuf/types"
-	_ "github.com/gogo/googleapis/google/api"
-	github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
+    fmt "fmt"
+    _ "github.com/gogo/googleapis/google/api"
+    _ "github.com/gogo/protobuf/gogoproto"
+    proto "github.com/gogo/protobuf/proto"
+    _ "github.com/gogo/protobuf/types"
+    golang_proto "github.com/golang/protobuf/proto"
+    github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
+    math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -21,21 +21,21 @@ var _ = fmt.Errorf
 var _ = math.Inf
 
 func (this *Company) Validate() error {
-	return nil
+    return nil
 }
 func (this *OneCompanyRequest) Validate() error {
-	return nil
+    return nil
 }
 func (this *ListCompanyRequest) Validate() error {
-	return nil
+    return nil
 }
 func (this *ListCompanyResponse) Validate() error {
-	for _, item := range this.Items {
-		if item != nil {
-			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
-				return github_com_mwitkow_go_proto_validators.FieldError("Items", err)
-			}
-		}
-	}
-	return nil
+    for _, item := range this.Items {
+        if item != nil {
+            if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
+                return github_com_mwitkow_go_proto_validators.FieldError("Items", err)
+            }
+        }
+    }
+    return nil
 }
