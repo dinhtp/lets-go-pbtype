@@ -269,12 +269,6 @@
         "limit": {
           "type": "integer",
           "format": "int64"
-        },
-        "search_field": {
-          "type": "string"
-        },
-        "search_value": {
-          "type": "string"
         }
       }
     },
