@@ -11,9 +11,9 @@
     "application/json"
   ],
   "paths": {
-    "/go/employee": {
+    "/go/company/{company_id}/employee": {
       "post": {
-        "operationId": "CompanyService_Create",
+        "operationId": "EmployeeService_Create",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -30,6 +30,12 @@
         },
         "parameters": [
           {
+            "name": "company_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
@@ -39,13 +45,13 @@
           }
         ],
         "tags": [
-          "CompanyService"
+          "EmployeeService"
         ]
       }
     },
     "/go/employee/{id}": {
       "get": {
-        "operationId": "CompanyService_Get",
+        "operationId": "EmployeeService_Get",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -69,11 +75,11 @@
           }
         ],
         "tags": [
-          "CompanyService"
+          "EmployeeService"
         ]
       },
       "delete": {
-        "operationId": "CompanyService_Delete",
+        "operationId": "EmployeeService_Delete",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -97,11 +103,11 @@
           }
         ],
         "tags": [
-          "CompanyService"
+          "EmployeeService"
         ]
       },
       "put": {
-        "operationId": "CompanyService_Update",
+        "operationId": "EmployeeService_Update",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -133,13 +139,13 @@
           }
         ],
         "tags": [
-          "CompanyService"
+          "EmployeeService"
         ]
       }
     },
     "/go/employees": {
       "get": {
-        "operationId": "CompanyService_List",
+        "operationId": "EmployeeService_List",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -180,10 +186,28 @@
             "in": "query",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "search_field",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "search_value",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "company_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
-          "CompanyService"
+          "EmployeeService"
         ]
       }
     }
@@ -193,6 +217,9 @@
       "type": "object",
       "properties": {
         "id": {
+          "type": "string"
+        },
+        "company_id": {
           "type": "string"
         },
         "name": {
