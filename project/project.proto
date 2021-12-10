@@ -7,7 +7,7 @@ option go_package = "github.com/dinhtp/lets-go-pbtype/project";
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "google/protobuf/empty.proto";
 import "google/api/annotations.proto";
-
+import "github.com/dinhtp/lets-go-pbtype/employee/employee.proto";
 // Enable custom Marshal method.
 option (gogoproto.marshaler_all) = true;
 // Enable custom Unmarshal method.
@@ -26,7 +26,8 @@ message Project{
     string code = 4;
     string status = 5;
     string description = 6;
-    string total_task = 7;
+    uint32 total_task = 7;
+    repeated employee.Employee employee_in_project = 8;
 
     string created_at = 20;
     string updated_at = 21;

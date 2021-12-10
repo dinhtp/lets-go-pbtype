@@ -11,6 +11,7 @@ import (
 	_ "github.com/gogo/protobuf/gogoproto"
 	_ "github.com/gogo/protobuf/types"
 	_ "github.com/gogo/googleapis/google/api"
+	_ "github.com/dinhtp/lets-go-pbtype/employee"
 	github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
 )
 
@@ -21,6 +22,13 @@ var _ = fmt.Errorf
 var _ = math.Inf
 
 func (this *Project) Validate() error {
+	for _, item := range this.EmployeeInProject {
+		if item != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("EmployeeInProject", err)
+			}
+		}
+	}
 	return nil
 }
 func (this *OneProjectRequest) Validate() error {
