@@ -11,7 +11,7 @@
     "application/json"
   ],
   "paths": {
-    "/go/project/{project_id}/employee/{employee_id}/task": {
+    "/go/project/{project_id}/task": {
       "post": {
         "operationId": "TaskService_Create",
         "responses": {
@@ -31,12 +31,6 @@
         "parameters": [
           {
             "name": "project_id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "employee_id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -210,12 +204,6 @@
             "in": "query",
             "required": false,
             "type": "string"
-          },
-          {
-            "name": "employee_id",
-            "in": "query",
-            "required": false,
-            "type": "string"
           }
         ],
         "tags": [
@@ -292,9 +280,6 @@
           "type": "string"
         },
         "project_id": {
-          "type": "string"
-        },
-        "employee_id": {
           "type": "string"
         },
         "name": {

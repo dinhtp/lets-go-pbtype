@@ -22,10 +22,9 @@ option (gogoproto.messagename_all) = true;
 message Task{
     string id = 1;
     string project_id = 2;
-    string employee_id = 3;
-    string name = 4;
-    string status = 5;
-    string description = 6;
+    string name = 3;
+    string status = 4;
+    string description = 5;
 
     string created_at = 20;
     string updated_at = 21;
@@ -43,7 +42,6 @@ message ListTaskRequest{
     string search_field = 5;
     string search_value = 6;
     string project_id = 7;
-    string employee_id = 8;
 }
 
 message ListTaskResponse{
@@ -57,7 +55,7 @@ message ListTaskResponse{
 service TaskService {
     rpc Create(Task) returns (Task) {
         option (google.api.http) = {
-            post: "/go/project/{project_id}/employee/{employee_id}/task"
+            post: "/go/project/{project_id}/task"
             body: "*"
         };
     };

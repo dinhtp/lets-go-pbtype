@@ -213,6 +213,38 @@
     }
   },
   "definitions": {
+    "employeeEmployee": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "company_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "dob": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      }
+    },
     "projectListProjectResponse": {
       "type": "object",
       "properties": {
@@ -262,7 +294,14 @@
           "type": "string"
         },
         "total_task": {
-          "type": "string"
+          "type": "integer",
+          "format": "int64"
+        },
+        "employee_in_project": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/employeeEmployee"
+          }
         },
         "created_at": {
           "type": "string"
