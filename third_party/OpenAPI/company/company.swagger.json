@@ -214,10 +214,6 @@
           "type": "integer",
           "format": "int64"
         },
-        "total_project": {
-          "type": "integer",
-          "format": "int64"
-        },
         "created_at": {
           "type": "string"
         },

@@ -27,10 +27,9 @@ message Company {
     string address = 5;
     string tax_number = 6;
     uint32 total_employee = 7;
-    uint32 total_project = 8;
 
-    string created_at = 20;
-    string updated_at = 21;
+    string created_at = 10;
+    string updated_at = 11;
 }
 
 message OneCompanyRequest {
@@ -53,32 +52,31 @@ message ListCompanyResponse {
 }
 
 service CompanyService {
+    rpc Get(OneCompanyRequest) returns (Company) {
+        option (google.api.http) = {
+            get: "/go/company/{id}"
+        };
+    };
     rpc Create(Company) returns (Company) {
         option (google.api.http) = {
             post: "/go/company"
             body: "*"
         };
     };
-
     rpc Update(Company) returns (Company) {
         option (google.api.http) = {
             put: "/go/company/{id}"
             body: "*"
         };
     };
-    rpc Get(OneCompanyRequest) returns (Company) {
+    rpc Delete(OneCompanyRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            get: "/go/company/{id}"
+            delete: "/go/company/{id}"
         };
     };
     rpc List(ListCompanyRequest) returns (ListCompanyResponse) {
         option (google.api.http) = {
             get: "/go/companies"
-        };
-    };
-    rpc Delete(OneCompanyRequest) returns (google.protobuf.Empty) {
-        option (google.api.http) = {
-            delete: "/go/company/{id}"
         };
     };
 }
